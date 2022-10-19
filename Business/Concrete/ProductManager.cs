@@ -20,5 +20,15 @@ namespace Business.Concrete
             // yetki sorgulaması
             return _productDal.GetAll(); //verileri DataAccess katmanından çağırır.
         }
+
+        public List<Product> GetAllByCategoryId(int Id)
+        {
+            return _productDal.GetAll(p => p.CategoryId == Id);
+        }
+
+        public List<Product> GetAllByPrice(decimal min, decimal max)
+        {
+            return _productDal.GetAll(p => p.UnitPrice <= max && p.UnitPrice >= min);
+        }
     }
 }
