@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.Linq;
 using System.Linq.Expressions;
+using Entities.DTOs;
 
 namespace DataAccess.Concrete.InMemory
 {
@@ -52,6 +53,11 @@ namespace DataAccess.Concrete.InMemory
         public List<Product> GetAllByCategory(int categoryId)
         {
             return _product.Where(p => p.CategoryId == categoryId).ToList(); // categoryId' ye eşitse listeler
+        }
+
+        public List<ProductDetailsDto> getProductDetails()
+        {
+            throw new NotImplementedException();
         }
 
         public void Update(Product product)

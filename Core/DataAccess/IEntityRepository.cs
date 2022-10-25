@@ -1,10 +1,11 @@
-﻿using Entities.Abstract;
+﻿
+using Core.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq.Expressions;
 using System.Text;
-
-namespace DataAccess.Abstract
+// kor katmanı diğer katmanları referans almaz
+namespace Core.DataAccess
 {  //generic constrain
     public interface IEntityRepository<T> where T: class,IEntity,new() // IEntity'i implemente eden bi class olabilir.
     {
