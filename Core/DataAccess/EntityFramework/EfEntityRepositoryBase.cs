@@ -7,8 +7,9 @@ using System.Linq.Expressions;
 using System.Text;
 
 namespace Core.DataAccess.EntityFramework
-{
-    public class IEfEntityRepositoryBase<TEntity, TContext> : IEntityRepository<TEntity>
+{  // Varlık veritabanlarında entity framework icin ortak yapılacak işlemler bu sınıfta yer alır. 
+    // IEntityRepositoryden aldığı imzaları implemente eder
+    public class EfEntityRepositoryBase<TEntity, TContext> : IEntityRepository<TEntity>
         where TEntity : class, IEntity, new()
         where TContext : DbContext, new()
     {
