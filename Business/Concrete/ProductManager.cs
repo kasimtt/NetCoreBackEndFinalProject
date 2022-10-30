@@ -1,4 +1,6 @@
 ﻿using Business.Abstract;
+using Business.Constants;
+using Core.Utilities.Results;
 using DataAccess.Abstract;
 using Entities.Concrete;
 using Entities.DTOs;
@@ -15,11 +17,28 @@ namespace Business.Concrete
         {
             _productDal = productDal;
         }
-        public List<Product> GetAll()
+
+        public IResult Add(Product product)
         {
-            //iş kodları
-            // yetki sorgulaması
-            return _productDal.GetAll(); //verileri DataAccess katmanından çağırır.
+            //business code
+           
+            if(product.ProductName.Length<2)
+            {
+                return new ErrorResult(Messages.ProductNameInvalid);  // Messages sınıfından "geçersiz isimlendirme" uyarısı gelir
+            }
+           
+            _productDal.Add(product);
+           return  new SuccesResult(Messages.ProductAdded); // Messages sınıfından "proje eklendi" uyarısı gelir
+        }
+
+        public IDataResult<List<Product>> GetAll()
+        {
+            if(DateTime.Now.Hour == 22)
+            {
+                return new ErrorDataResult();
+            }
+
+            return new SuccesDataResult<List<Product>>(_productDal.GetAll(),true,"ürünler listelendi"); //verileri DataAccess katmanından çağırır.
         }
 
         public List<Product> GetAllByCategoryId(int Id)
@@ -36,5 +55,12 @@ namespace Business.Concrete
         {
             return _productDal.getProductDetails();
         }
+
+        public Product getProductId(int productId)
+        {
+            return _productDal.Get(p => p.ProductId == productId);
+        }
+
+       
     }
 }

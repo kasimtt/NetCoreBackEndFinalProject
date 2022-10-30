@@ -1,4 +1,5 @@
-﻿using Entities.Concrete;
+﻿using Core.Utilities.Results;
+using Entities.Concrete;
 using Entities.DTOs;
 using System;
 using System.Collections.Generic;
@@ -8,9 +9,12 @@ namespace Business.Abstract
 {
     public interface IProductService
     {
-        List<Product> GetAll();
-        List<Product> GetAllByCategoryId(int Id);
-        List<Product> GetAllByPrice(decimal max, decimal min);
-        List<ProductDetailsDto> getProductDetails();
+        IDataResult<List<Product>> GetAll();  // hem data doner hemde sonuc doner   
+        IDataResult<List<Product>> GetAllByCategoryId(int id); //datamız generic olarak yazılandır
+        IDataResult<List<Product>> GetAllByPrice(decimal min, decimal max);
+        IDataResult<List<ProductDetailsDto>> getProductDetails();
+        IDataResult<Product>  getProductId(int productId);
+        IDataResult<IResult> Add(Product product); //IResult voidler icin kullanıldı. işlem sonucunun başarı durumunu donderir ama data dönmez
+
     }
 }
