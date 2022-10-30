@@ -14,7 +14,7 @@ namespace Business.Abstract
         IDataResult<List<Product>> GetAllByPrice(decimal min, decimal max);
         IDataResult<List<ProductDetailsDto>> getProductDetails();
         IDataResult<Product>  getProductId(int productId);
-        IDataResult<IResult> Add(Product product); //IResult voidler icin kullanıldı. işlem sonucunun başarı durumunu donderir ama data dönmez
+        IResult Add(Product product); //IResult voidler icin kullanıldı. işlem sonucunun başarı durumunu donderir ama data dönmez
 
     }
 }

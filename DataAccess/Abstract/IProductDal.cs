@@ -10,6 +10,5 @@ namespace DataAccess.Abstract
     public interface IProductDal : IEntityRepository<Product> //product icin eklemeler yapılabilir
     {
         List<ProductDetailsDto> getProductDetails();
-        void Get();
     }
 }

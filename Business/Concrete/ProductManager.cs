@@ -35,32 +35,37 @@ namespace Business.Concrete
         {
             if(DateTime.Now.Hour == 22)
             {
-                return new ErrorDataResult();
+                return new ErrorDataResult<List<Product>>(Messages.MaintenanceTime);
             }
 
-            return new SuccesDataResult<List<Product>>(_productDal.GetAll(),true,"ürünler listelendi"); //verileri DataAccess katmanından çağırır.
+            return new SuccessDataResult<List<Product>>(_productDal.GetAll(),Messages.ProductListed); //verileri DataAccess katmanından çağırır.
         }
 
-        public List<Product> GetAllByCategoryId(int Id)
+        public IDataResult<List<Product>>GetAllByCategoryId(int Id)
         {
-            return _productDal.GetAll(p => p.CategoryId == Id);
+            return new SuccessDataResult<List<Product>>(_productDal.GetAll(p => p.CategoryId == Id));
         }
 
-        public List<Product> GetAllByPrice(decimal min, decimal max)
+        public IDataResult<List<Product>> GetAllByPrice(decimal min, decimal max)
         {
-            return _productDal.GetAll(p => p.UnitPrice <= max && p.UnitPrice >= min);
+            return new SuccessDataResult<List<Product>>(_productDal.GetAll(p => p.UnitPrice <= max && p.UnitPrice >= min));
         }
 
-        public List<ProductDetailsDto> getProductDetails()
+        public IDataResult<List<ProductDetailsDto>> getProductDetails()
         {
-            return _productDal.getProductDetails();
+            if(DateTime.Now.Hour==14)
+            {
+                return new ErrorDataResult<List<ProductDetailsDto>>(Messages.MaintenanceTime);
+            }
+
+            return new SuccessDataResult<List<ProductDetailsDto>>(_productDal.getProductDetails(),Messages.ProductListed);
         }
 
-        public Product getProductId(int productId)
+        public IDataResult<Product> getProductId(int productId)
         {
-            return _productDal.Get(p => p.ProductId == productId);
+            return new SuccessDataResult<Product>(_productDal.Get(p => p.ProductId == productId));
         }
 
-       
+      
     }
 }
