@@ -21,7 +21,7 @@ namespace consoleUI
             CategoryManager categoryManager = new CategoryManager(new EfCategoryDal());
             var categories = categoryManager.GetAll();
 
-            foreach (var category in categories)
+            foreach (var category in categories.Data)
             {
                 Console.WriteLine(category.CategoryName);
             }

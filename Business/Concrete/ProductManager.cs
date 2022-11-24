@@ -51,7 +51,7 @@ namespace Business.Concrete
             return new SuccessDataResult<List<Product>>(_productDal.GetAll(p => p.UnitPrice <= max && p.UnitPrice >= min));
         }
 
-        public IDataResult<List<ProductDetailsDto>> getProductDetails()
+        public IDataResult<List<ProductDetailsDto>> GetProductDetails()
         {
             if(DateTime.Now.Hour==14)
             {
@@ -61,7 +61,7 @@ namespace Business.Concrete
             return new SuccessDataResult<List<ProductDetailsDto>>(_productDal.getProductDetails(),Messages.ProductListed);
         }
 
-        public IDataResult<Product> getProductId(int productId)
+        public IDataResult<Product> GetProductById(int productId)
         {
             return new SuccessDataResult<Product>(_productDal.Get(p => p.ProductId == productId));
         }
