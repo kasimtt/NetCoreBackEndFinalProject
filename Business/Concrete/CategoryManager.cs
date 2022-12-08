@@ -21,13 +21,13 @@ namespace Business.Concrete
         public IResult Added(Category category)
         {
             categoryDal.Add(category);
-            return new SuccesResult(Messages.AddedCategory);
+            return new SuccessResult(Messages.AddedCategory);
         }
 
         public IResult Deleted(Category category)
         {
             categoryDal.Delete(category);
-            return new SuccesResult();  // burada kalmıştr8k
+            return new SuccessResult();  // burada kalmıştr8k
         }
 
         public IDataResult<List<Category>> GetAll()

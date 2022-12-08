@@ -15,9 +15,9 @@ namespace Core.Utilities.Results
         // messajı vermek zorunda olmadığımız icin ikinci bir contructor olusturdum.
         public Result(bool success)
         {
-            Succes = success;
+            Success = success;
         }
-        public bool Succes { get; }
+        public bool Success { get; }
 
         public string Message { get; }
     }

@@ -1,33 +1,28 @@
 ﻿using Business.Abstract;
-using Business.Concrete;
-using DataAccess.Concrete.EntityFramework;
 using Entities.Concrete;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading;
 using System.Threading.Tasks;
 
 namespace WebApi.Controllers
 {
     [Route("api/[controller]")]
-    [ApiController]  //attribute --> javadaki annotation
-    public class ProductsController : ControllerBase
+    [ApiController]
+    public class CategoriesController : ControllerBase
     {
-        IProductService _productService;
-
-        public ProductsController(IProductService productService)
+        ICategoryService _categoryService;
+        public CategoriesController(ICategoryService categoryService)
         {
-            _productService = productService;
+            _categoryService = categoryService;
         }
 
         [HttpGet("getall")]
         public IActionResult GetAll()
         {
-            Thread.Sleep(2000);
-            var result = _productService.GetAll();
+            var result = _categoryService.GetAll();
             if(result.Success)
             {
                 return Ok(result);
@@ -35,25 +30,10 @@ namespace WebApi.Controllers
             return BadRequest(result);
         }
 
-        [HttpGet("getproductbyid")]
-        public IActionResult GetProductById(int id)
+        [HttpGet("getbyid")]
+        public IActionResult GetById(int id)
         {
-            var result = _productService.GetProductById(id); 
-            if(result.Success)
-            {
-                return Ok(result);
-            }
-            return BadRequest(result);
-
-        }
-
-
-
-
-        [HttpPost("add")]
-        public IActionResult Add(Product product)
-        {
-            var result = _productService.Add(product);
+            var result = _categoryService.GetById(id);
             
             if(result.Success)
             {
@@ -61,8 +41,28 @@ namespace WebApi.Controllers
             }
             return BadRequest(result);
         }
-       
-     
-        
+
+        [HttpPost("add")]
+        public IActionResult Add(Category category)
+        {
+            var result = _categoryService.Added(category);
+            if(result.Success)
+            {
+                return Ok(result);
+            }
+            return BadRequest(result);
+        }
+        [HttpPost("delete")]
+        public IActionResult Delete(Category category)
+        {
+            var result = _categoryService.Deleted(category);
+            if(result.Success)
+            {
+                return Ok(result);
+            }
+            return BadRequest(result);
+        }
+
+
     }
 }

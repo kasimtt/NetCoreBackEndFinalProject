@@ -4,13 +4,13 @@ using System.Text;
 
 namespace Core.Utilities.Results
 {
-    public class SuccesResult:Result
+    public class SuccessResult:Result
     {
-        public SuccesResult(string message):base(true,message)  // işlemimizin başarılı olduğunu burada gösteriyoruz.
+        public SuccessResult(string message):base(true,message)  // işlemimizin başarılı olduğunu burada gösteriyoruz.
         {
             
         }
-        public SuccesResult():base(true)
+        public SuccessResult():base(true)
         {
 
         }

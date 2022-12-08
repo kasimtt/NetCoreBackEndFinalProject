@@ -28,7 +28,7 @@ namespace Business.Concrete
             }
            
             _productDal.Add(product);
-           return  new SuccesResult(Messages.ProductAdded); // Messages sınıfından "proje eklendi" uyarısı gelir
+           return  new SuccessResult(Messages.ProductAdded); // Messages sınıfından "proje eklendi" uyarısı gelir
         }
 
         public IDataResult<List<Product>> GetAll()
