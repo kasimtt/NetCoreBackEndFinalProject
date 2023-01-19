@@ -30,11 +30,7 @@ namespace WebApi
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
-            services.AddSingleton<IProductService, ProductManager>();
-            services.AddSingleton<IProductDal, EfProductDal>();
-            services.AddSingleton<ICategoryService,CategoryManager>();
-            services.AddSingleton<ICategoryDal, EfCategoryDal>();
-
+          
 
 
             services.AddCors();

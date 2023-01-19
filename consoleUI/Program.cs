@@ -27,25 +27,25 @@ namespace consoleUI
             }
         }
 
-        private static void ProductTest()
-        {
-            ProductManager productManager = new ProductManager(new EfProductDal());
+        //private static void ProductTest()
+        //{
+        //    ProductManager productManager = new ProductManager(new EfProductDal());
 
-            var result = productManager.getProductDetails();
+        //    var result = productManager.getProductDetails();
 
-            if(result.Succes)
-            {
-                foreach (var product in result.Data)
-                {
-                    Console.WriteLine(product.ProductName + "//" + product.CategoryName);
-                }
-                string message = result.Message;
-                Console.WriteLine(message);
-            }
-            else
-            {
-                Console.WriteLine(result.Message);
-            }
-        }
+        //    if(result.Succes)
+        //    {
+        //        foreach (var product in result.Data)
+        //        {
+        //            Console.WriteLine(product.ProductName + "//" + product.CategoryName);
+        //        }
+        //        string message = result.Message;
+        //        Console.WriteLine(message);
+        //    }
+        //    else
+        //    {
+        //        Console.WriteLine(result.Message);
+        //    }
+        //}
     }
 }
