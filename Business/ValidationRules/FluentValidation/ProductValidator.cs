@@ -6,6 +6,8 @@ using System.Text;
 
 namespace Business.ValidationRules.FluentValidation
 {
+
+    // product işlemlerinin kuralları
     public class ProductValidator : AbstractValidator<Product>
     {
         public ProductValidator()
