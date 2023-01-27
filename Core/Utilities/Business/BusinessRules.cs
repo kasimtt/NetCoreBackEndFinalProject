@@ -7,6 +7,7 @@ namespace Core.Utilities.Business
 {
     public class BusinessRules
     {
+        //İş kurallarını çalıştırma motoru.
         public static IResult Run(params IResult[] logics)
         {
             foreach (var logic in logics)   // hatalı olan iş kuralını business'a bildiriyoruz.
