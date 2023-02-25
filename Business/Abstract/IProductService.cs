@@ -16,5 +16,6 @@ namespace Business.Abstract
         IDataResult<Product>  GetProductById(int productId);
         IResult Add(Product product); //IResult voidler icin kullanıldı. işlem sonucunun başarı durumunu donderir ama data dönmez
         IResult Update(Product product);
+        IResult AddTransactionTest(Product product);
     }
 }

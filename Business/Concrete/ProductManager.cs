@@ -4,6 +4,7 @@ using Business.CCS;
 using Business.Constants;
 using Business.ValidationRules.FluentValidation;
 using Core.Aspects.Autofac.Caching;
+using Core.Aspects.Autofac.Transaction;
 using Core.Aspects.Autofac.Validation;
 using Core.CrossCuttingConcerns.Validation;
 using Core.Utilities.Business;
@@ -124,6 +125,19 @@ namespace Business.Concrete
                 return new ErrorResult(Messages.CategoryLimitExceeded);
             }
             return new SuccessResult();
+        }
+        //Test işlemidir
+        [TransactionScopeAspect]
+        public IResult AddTransactionTest(Product product)
+        {
+            Add(product);
+            if(product.UnitPrice<10)
+            { 
+                throw new Exception("hatasız kul olmaz hatamla sev beni");
+            }
+           
+            Add(product);
+            return null;
         }
     }
 }
