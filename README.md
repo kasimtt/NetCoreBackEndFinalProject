@@ -3,7 +3,7 @@ Kodlama.io ile yazılım geliştirici yetiştirme kampında işlenen derslerin u
 
 ## Proje Bilgileri
 * C#, Katmanlı mimari, Entity Framework gibi teknolojiler kullanarak BackEnd geliştirilmiştir.
-* Projede JWT(Jason Web Token), Autofac, fluent validation ,İleri Seviye Result yapısı gibi özellikler de mevcuttur. 
+* Projede JWT(Json Web Token), Autofac, fluent validation ,İleri Seviye Result yapısı gibi özellikler de mevcuttur. 
 * Kurumsal yazılım mimarilerine uygun olarak hazırlanmıştır.
 ***
 ## BackEnd için Kullanılan Dil ve Teknolojiler
